@@ -13,7 +13,7 @@ public class RpgPlayer {
     private int health;
     private int maxHealth;
     private int armour;
-    private int damage;
+
     public static final int MAX_CARRYING_CAPACITY = 1000;
     // How much the player can carry in pounds
     private int carryingCapacity;
@@ -51,14 +51,6 @@ public class RpgPlayer {
     }
 
     //getters and setters for player
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-
-    public int getDamage() {
-        return damage;
-    }   
-
     public List<Item> getInventory(){
         return inventory.getInventory();
     }
