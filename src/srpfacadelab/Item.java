@@ -3,24 +3,18 @@ package srpfacadelab;
 public class Item {
 
     private int id;
-
     private String name;
-
     // How much the item heals by.
     private int heal;
-
     // How much armour the player gets when it is equipped.
     private int armour;
-
     // How much this item weighs in pounds.
     private int weight;
-
     // A unique item can only be picked up once.
     private boolean unique;
-
     // Rare items are shiny
     private final boolean rare;
-
+    
     public Item(int id, String name, int heal, int armour, int weight, boolean unique, boolean rare)
     {
         this.rare = rare;

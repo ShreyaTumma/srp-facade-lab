@@ -14,7 +14,7 @@ public class Main {
         ((SimpleGameEngine) game).addPlayer(player2);
 
         //Here you would create items
-
+        
         //Here you would tell the history and make the game happen
 
         //You could make players pick up items
