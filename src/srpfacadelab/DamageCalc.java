@@ -1,18 +1,18 @@
 package srpfacadelab;
 
-public class Damage {
+public class DamageCalc {
     private RpgPlayer player;
 
-    public Damage(RpgPlayer player) {
+    public DamageCalc(RpgPlayer player) {
         this.player = player;
     }
     
     public void takeDamage(int damage) {
-        if (player.getInventory().getInventoryWeight() < (player.getCarryingCapacity() / 2)) {
-            player.setDamage((player.getDamage() - (int)(player.getDamage() * (25/100))));
+        if (player.calculateInventoryWeight() < (player.getCarryingCapacity() / 2)) {
+            player.setDamage((player.getDamage() - (int)(player.getDamage() * 0.25)));
         }
         
-        if (player.getDamage() < player.getArmour()) {
+        if (damage < player.getArmour()) {
             player.getGameEngine().playSpecialEffect("parry");
         }
 

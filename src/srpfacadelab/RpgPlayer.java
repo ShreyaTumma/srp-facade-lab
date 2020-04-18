@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public class RpgPlayer {
 
     private final IGameEngine gameEngine;
-    private Inventory inventory;
-    private Damage damageCalc;
+    private final Inventory inventory;
+    private final DamageCalc damageCalc;
 
     private int health;
     private int maxHealth;
@@ -20,23 +20,49 @@ public class RpgPlayer {
 
     public RpgPlayer(IGameEngine gameEngine) {
         this.gameEngine = gameEngine;
-        inventory = new Inventory(this);
-        damageCalc = new Damage(this);
+        this.inventory = new Inventory(this);
+        this.damageCalc = new DamageCalc(this);
         carryingCapacity = MAX_CARRYING_CAPACITY;
         
     }
 
+    public void useItem(Item item) {
+        inventory.useItem(item);
+    }
+
+    public boolean pickUpItem(Item item) {
+        return inventory.pickUpItem(item);
+    }
+
+    public boolean checkIfItemExistsInInventory(Item item) {
+        return inventory.checkIfItemExistsInInventory(item);
+    }
+
+    public int calculateInventoryWeight() {
+        return inventory.getInventoryWeight();
+    }
+
+    public void calculateStats(){
+        inventory.calculateStats();
+    }
+    
+    public void takeDamage(int damage){
+        damageCalc.takeDamage(damage);
+    }
+
+    //getters and setters for player
     public void setDamage(int damage) {
         this.damage = damage;
     }
+
     public int getDamage() {
         return damage;
+    }   
+
+    public List<Item> getInventory(){
+        return inventory.getInventory();
     }
 
-    public Inventory getInventory(){
-        return inventory;
-    }
-    
     public int getHealth() {
         return health;
     }

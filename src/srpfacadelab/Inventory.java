@@ -59,7 +59,7 @@ public class Inventory {
         return true;
     }
     
-    private boolean checkIfItemExistsInInventory(Item item) {
+    public boolean checkIfItemExistsInInventory(Item item) {
         for (Item i: inventory) {
             if (i.getId() == item.getId())
                 return true;
@@ -80,7 +80,7 @@ public class Inventory {
         return inventoryWeight;
     }
     
-    private void calculateStats() {
+    public void calculateStats() {
         for (Item i: inventory) {
             player.setArmour(player.getArmour()+ i.getArmour());
         }
