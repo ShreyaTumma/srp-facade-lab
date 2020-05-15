@@ -7,10 +7,10 @@ public class DamageCalc {
         this.player = player;
     }
     
-    public void takeDamage(int damage) {
+    public void takeDamage(int damage, int inventoryWeight) {
         int damageToDeal = damage - player.getArmour();
         
-        if (player.calculateInventoryWeight() < (player.getCarryingCapacity() / 2)) {
+        if (inventoryWeight < (player.getCarryingCapacity() / 2)) {
             damageToDeal = damageToDeal - (int)(damageToDeal * .25);
         }
 

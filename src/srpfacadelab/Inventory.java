@@ -4,20 +4,13 @@ import java.util.ArrayList;
 
 public class Inventory {
 
-    private List<Item> inventory;
     private RpgPlayer player;
-    private int inventoryWeight;
-
+    
     //initialize inventory for each player
     public Inventory(RpgPlayer player) {
-        inventory = new ArrayList<Item>();
         this.player = player;
     }
     
-    public List<Item> getInventory(){
-        return inventory;
-    }
-
     public void useItem(Item item) {
         if (item.getName().equals("Stink Bomb"))
         {
@@ -54,37 +47,30 @@ public class Inventory {
         else if (item.isRare())
             player.getGameEngine().playSpecialEffect("cool_swirly_particles");
 
-        inventory.add(item);
+        player.getInventoryList().add(item);
         calculateStats();
         return true;
     }
     
     public boolean checkIfItemExistsInInventory(Item item) {
-        for (Item i: inventory) {
+        for (Item i: player.getInventoryList()) {
             if (i.getId() == item.getId())
                 return true;
         }
         return false;
     }
 
-    private int calculateInventoryWeight() {
+    public int calculateInventoryWeight() {
         int sum=0;
-        for (Item i: inventory) {
+        for (Item i: player.getInventoryList()) {
             sum += i.getWeight();
         }
-        inventoryWeight = sum;
         return sum;
     }
 
-    public int getInventoryWeight(){
-        return inventoryWeight;
-    }
-    
     public void calculateStats() {
-        for (Item i: inventory) {
+        for (Item i: player.getInventoryList()) {
             player.setArmour(player.getArmour()+ i.getArmour());
         }
     }
-
-
 }
